@@ -1,6 +1,7 @@
 package me.aoa4eva.demo.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -45,5 +46,16 @@ public class Actor {
 
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
+    }
+
+
+    //try add something if if it will work for actor
+    public Actor() {
+        this.movies = new HashSet<Movie>();
+    }
+
+    public void addActor(Movie a)
+    {
+        this.movies.add(a);
     }
 }

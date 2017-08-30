@@ -12,10 +12,8 @@ public class Movie {
     private long year;
     private String description;
 
-    public Movie() {
-        this.cast = new HashSet<Actor>();
-    }
 
+    //Error: Illegal use of mappedBy on both sides of the relationship if try to mappedBy="movies"
     @ManyToMany()
     private Set<Actor> cast;
 
@@ -59,8 +57,17 @@ public class Movie {
         this.cast = cast;
     }
 
+
+    //the following two methods are what matter most
+    public Movie() {
+        this.cast = new HashSet<Actor>();
+    }
+
     public void addActor(Actor a)
     {
         this.cast.add(a);
     }
+
+
 }
+
