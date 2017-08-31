@@ -14,6 +14,8 @@ public class Actor {
     String realname;
 
     @ManyToMany(mappedBy="cast")
+    // mapped by cast, the variable
+    // join column to customiza the cloumn name in db
     private Set<Movie> movies;
 
     public long getId() {
@@ -54,7 +56,7 @@ public class Actor {
         this.movies = new HashSet<Movie>();
     }
 
-    public void addActor(Movie a)
+    public void addMovie(Movie a)
     {
         this.movies.add(a);
     }

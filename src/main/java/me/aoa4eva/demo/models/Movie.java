@@ -14,6 +14,7 @@ public class Movie {
 
 
     //Error: Illegal use of mappedBy on both sides of the relationship if try to mappedBy="movies"
+    // many to many default lazy and all
     @ManyToMany()
     private Set<Actor> cast;
 
@@ -59,6 +60,7 @@ public class Movie {
 
 
     //the following two methods are what matter most
+    // create/instenciate a holder
     public Movie() {
         this.cast = new HashSet<Actor>();
     }

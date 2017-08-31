@@ -34,6 +34,7 @@ public class MainController {
         movie.setYear(2017);
         movie.setDescription("About Emojis...");
 
+        //when create movie, have to add actor to movie to make connection
         movie.addActor(a);
         movieRepository.save(movie);
 
@@ -48,6 +49,8 @@ public class MainController {
         //this is a easier way to make it also work
         Movie movie3 = new Movie();
         movie3.setTitle("hello2");
+
+
         movie3.getCast().add(a);
 
 
@@ -61,11 +64,16 @@ public class MainController {
         Actor b = new Actor();
         b.setName("Nolan");
         b.setRealname("Sandra Mae Nolan");
-        b.getMovies().add(movie);
+//        actorRepository.save(b);
+
+
+
+        //this is what make the connections!!!!!!! first doesn't work
+        //b.getMovies().add(movie);
 
         actorRepository.save(b);
-
-
+        b.addMovie(movie);
+        actorRepository.save(b);
 
         return "results added";
 
