@@ -13,7 +13,7 @@ public class Actor {
     String name;
     String realname;
 
-    @ManyToMany(mappedBy="cast", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy="cast")
     private Set<Movie> movies;
 
     public long getId() {
@@ -54,7 +54,7 @@ public class Actor {
         this.movies = new HashSet<Movie>();
     }
 
-    public void addActor(Movie a)
+    public void addMovie(Movie a)
     {
         this.movies.add(a);
     }
