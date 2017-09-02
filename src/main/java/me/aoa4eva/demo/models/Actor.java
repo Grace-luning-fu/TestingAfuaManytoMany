@@ -13,7 +13,7 @@ public class Actor {
     String name;
     String realname;
 
-    @ManyToMany(mappedBy="cast")
+    @ManyToMany(mappedBy="cast", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Movie> movies;
 
     public long getId() {

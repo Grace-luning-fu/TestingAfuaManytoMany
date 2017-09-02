@@ -14,7 +14,7 @@ public class Movie {
 
 
     //Error: Illegal use of mappedBy on both sides of the relationship if try to mappedBy="movies"
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> cast;
 
     public long getId() {
