@@ -39,7 +39,7 @@ public class MainController {
         movieRepository.save(movie);
 
 
-        //add a new movie and connect to actor a
+        //add a new movie and connect to actor
         Set<Actor> castlist = new HashSet<>();
         castlist.add(a);
         Movie movie2 = new Movie();
@@ -64,15 +64,16 @@ public class MainController {
         Actor b = new Actor();
         b.setName("Nolan");
         b.setRealname("Sandra Mae Nolan");
-//        actorRepository.save(b);
 
 
-
-        //this is what make the connections!!!!!!! first doesn't work
         //b.getMovies().add(movie);
-
-        actorRepository.save(b);
         b.addMovie(movie);
+        actorRepository.save(b);
+
+        //this is what create the relationship, even without save the movie to repo
+        movie.addActor(b);
+
+
         actorRepository.save(b);
 
         return "results added";
