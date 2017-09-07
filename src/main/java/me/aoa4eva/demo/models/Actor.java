@@ -13,7 +13,9 @@ public class Actor {
     String name;
     String realname;
 
-    @ManyToMany(mappedBy="cast")
+    // the class not being mapped is the owner class. In this case, Movie is owner class/side
+    // and actor is the inverse side
+    @ManyToMany(mappedBy="cast", cascade = CascadeType.ALL, fetch=FetchType.EAGER )
     private Set<Movie> movies;
 
     public long getId() {
@@ -49,7 +51,7 @@ public class Actor {
     }
 
 
-    //try add something if if it will work for actor
+    //try add movie from actor side and see if it will work for actor
     public Actor() {
         this.movies = new HashSet<Movie>();
     }

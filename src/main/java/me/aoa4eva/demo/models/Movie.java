@@ -14,6 +14,7 @@ public class Movie {
 
 
     //Error: Illegal use of mappedBy on both sides of the relationship if try to mappedBy="movies"
+    // Movie is the owner class in this example, relations can be created in db when movie side gets saved
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> cast;
 
