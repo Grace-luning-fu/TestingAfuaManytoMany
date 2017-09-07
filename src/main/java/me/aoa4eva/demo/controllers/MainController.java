@@ -53,17 +53,23 @@ public class MainController {
 
         //this is a easier way to make it also work
         Movie movie3 = new Movie();
-        movie3.setTitle("hello3");
+        movie3.setTitle("hello2");
+
+
         movie3.getCast().add(a);
+
 
         //when save to movieRepo, the relation movies-cast is also created
         movieRepository.save(movie2);
         movieRepository.save(movie3);
 
+
+
         //add a new actor and create a relation with movie, but it doesn't create a relationship this way
         Actor b = new Actor();
         b.setName("Nolan");
         b.setRealname("Sandra Mae Nolan");
+//        actorRepository.save(b);
 
         // just add movie to actor and save actor doesn't create the relationship
         b.getMovies().add(movie3);
@@ -77,6 +83,13 @@ public class MainController {
         //without the following statement, the relationship doesn't get created, but you don't have to save it to make it work
         movie2.addActor(b);
         actorRepository.save(b);
+
+        //this is what create the relationship, even without save the movie to repo
+        movie.addActor(b);
+
+
+        actorRepository.save(b);
+
         return "results added";
 
 
