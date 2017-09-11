@@ -91,6 +91,9 @@ public class MainController {
 
         return "results added";
 
+//        movie.removeactor(a);
+//        a.removeMovie(movie);
+
 
         //try remove a movie, cannot remove either side directly, it make more sense just remove a movie from one actor
         //rather than remove the whole movie.
@@ -121,14 +124,31 @@ public class MainController {
 //    }
 
     @GetMapping("/remove")
-    public @ResponseBody String getmremove(@ModelAttribute("movie")Movie movie, @ModelAttribute("actorb")Actor b,
-                                       @ModelAttribute("movie2")Movie movie2, @ModelAttribute("actora")Actor a)
+    public @ResponseBody String getmremove()
     {
-        movie.removeactor(a);
-        a.removeMovie(movie);
 
-        movieRepository.save(movie);
-        actorRepository.save(a);
+        Actor actor1 = actorRepository.findOne(1L);
+        Movie movie1=movieRepository.findOne(1L);
+        System.out.println(actor1.getName());
+        System.out.println(movie1.getTitle());
+        System.out.println("Step1--------");
+
+
+        actor1.removeMovie(movie1);
+        movie1.removeActor(actor1);
+
+        System.out.println(actor1.getMovies().toString());
+        System.out.println(movie1.getCast().toString());
+
+        System.out.println("000000");
+
+        actorRepository.save(actor1);
+        movieRepository.save(movie1);
+
+//
+//
+//        movieRepository.save(movieRepository.findOne(1L));
+//        actorRepository.save(actorRepository.findOne(1L));
 
 //        movieRepository.delete(movieRepository.findOne(1L));
 
