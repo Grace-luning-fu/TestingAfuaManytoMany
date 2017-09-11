@@ -60,4 +60,7 @@ public class Actor {
     {
         this.movies.add(a);
     }
+
+    public void removeMovie(Movie e){ this.movies.remove(e);}
+
 }

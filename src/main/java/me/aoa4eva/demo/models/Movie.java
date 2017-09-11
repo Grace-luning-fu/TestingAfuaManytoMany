@@ -69,6 +69,8 @@ public class Movie {
         this.cast.add(a);
     }
 
+    public void removeactor(Actor a){this.cast.add(a);}
+
 
 }
 

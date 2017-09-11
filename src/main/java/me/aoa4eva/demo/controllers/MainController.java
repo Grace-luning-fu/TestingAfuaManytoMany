@@ -6,8 +6,7 @@ import me.aoa4eva.demo.repository.ActorRepository;
 import me.aoa4eva.demo.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -93,12 +92,52 @@ public class MainController {
         return "results added";
 
 
-        //try remove a movie, cannot remove either side directly
+        //try remove a movie, cannot remove either side directly, it make more sense just remove a movie from one actor
+        //rather than remove the whole movie.
+
+
 
 //        movieRepository.delete(2L);
 //        actorRepository.delete(1L);
 
 
+    }
+
+
+    //try remove relationship from both sides
+//    @PostMapping("/remove")
+//    public @ResponseBody String remove(@ModelAttribute("movie")Movie movie, @ModelAttribute("actorb")Actor b,
+//                                       @ModelAttribute("movie2")Movie movie2, @ModelAttribute("actora")Actor a)
+//    {
+////        movie.removeactor(a);
+////        a.removeMovie(movie);
+//        movieRepository.delete(movie);
+//
+////        b.removeMovie(movie2);
+////        movie.removeactor(b);
+////        actorRepository.save(b);
+//
+//        return "testing remove";
+//    }
+
+    @GetMapping("/remove")
+    public @ResponseBody String getmremove(@ModelAttribute("movie")Movie movie, @ModelAttribute("actorb")Actor b,
+                                       @ModelAttribute("movie2")Movie movie2, @ModelAttribute("actora")Actor a)
+    {
+        movie.removeactor(a);
+        a.removeMovie(movie);
+
+        movieRepository.save(movie);
+        actorRepository.save(a);
+
+//        movieRepository.delete(movieRepository.findOne(1L));
+
+
+//        b.removeMovie(movie2);
+//        movie.removeactor(b);
+//        actorRepository.save(b);
+
+        return "testing remove";
     }
 
 
