@@ -193,5 +193,24 @@ public class MainController {
         System.out.println("--------trying to deleting from the movie repo");
      return "movie 1 deleted";}
 
+     @GetMapping("/removeActor")
+    public @ResponseBody String removeactor()
+     {
+         Actor actor = actorRepository.findOne(1L);
+         for (Movie m : actor.getMovies())
+         {
+             System.out.println("movie found asscoiated with actor" + m.getTitle());
+             m.removeActor(actor);
+             System.out.println("Movie removed from actor");
+
+         }
+         System.out.println("movies relation deleted");
+         actorRepository.delete(actor);
+         System.out.println("actor removed from db");
+
+         return "deleting actor!";
+
+     }
+
 
 }
