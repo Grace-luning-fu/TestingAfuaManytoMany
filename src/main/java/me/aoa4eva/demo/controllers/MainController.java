@@ -85,8 +85,6 @@ public class MainController {
 
         //this is what create the relationship, even without save the movie to repo
         movie.addActor(b);
-
-
         actorRepository.save(b);
 
         return "results added";
@@ -123,6 +121,7 @@ public class MainController {
 //        return "testing remove";
 //    }
 
+    //only to remove relationship
     @GetMapping("/remove")
     public @ResponseBody String getmremove()
     {
@@ -159,6 +158,32 @@ public class MainController {
 
         return "testing remove";
     }
+
+
+    // remove the owner side from repository
+    @GetMapping("/removeMovie")
+    public @ResponseBody String removeMovie()
+    {
+        Movie movie1 = movieRepository.findOne(1L);
+
+        try {
+
+
+
+        for (Actor actor: movie1.getCast())
+        {
+           actor.removeMovie(movie1);
+           movie1.removeActor(actor);
+        }
+        System.out.println("lllllllllll" + movie1.getTitle());
+        movieRepository.delete(movie1);
+
+
+    }catch (Exception e)
+        {
+            System.out.println("no movie to delete");
+        }
+     return "movie 1 deleted";}
 
 
 }
