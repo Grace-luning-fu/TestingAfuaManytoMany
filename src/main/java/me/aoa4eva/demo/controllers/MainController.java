@@ -133,6 +133,7 @@ public class MainController {
         System.out.println("Step1--------");
 
 
+        //has to remove relations from both sides, otherwise it won't work
         actor1.removeMovie(movie1);
         movie1.removeActor(actor1);
 
@@ -141,8 +142,11 @@ public class MainController {
 
         System.out.println("000000");
 
+
+        //have to save either side in the repo again to really delete the relation!!!!!
         actorRepository.save(actor1);
-        movieRepository.save(movie1);
+//        movieRepository.save(movie1);
+//
 
 //
 //
