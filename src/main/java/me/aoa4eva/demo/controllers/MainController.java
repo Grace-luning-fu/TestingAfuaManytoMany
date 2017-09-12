@@ -165,24 +165,32 @@ public class MainController {
     public @ResponseBody String removeMovie()
     {
         Movie movie1 = movieRepository.findOne(1L);
+        System.out.println("lllllllllll" + movie1.getTitle());
 
-        try {
-
-
+//        try {
 
         for (Actor actor: movie1.getCast())
         {
+            System.out.println("&&&&&&&"+actor.getId());
            actor.removeMovie(movie1);
-           movie1.removeActor(actor);
+           System.out.println("!!!!!deleting a move from actor");
+//           movie1.removeActor(actor);
+//           System.out.println("+++++++deleting an actor from movie");
+//           movieRepository.save(movie1);
+//           System.out.println("MMMMMMM");
+//           actorRepository.save(actor);
+            System.out.println("AAAAAAAAA");
         }
+
+
+//    }catch (Exception e)
+//        {
+//            System.out.println("no movie to delete");
+//        }
+
         System.out.println("lllllllllll" + movie1.getTitle());
         movieRepository.delete(movie1);
-
-
-    }catch (Exception e)
-        {
-            System.out.println("no movie to delete");
-        }
+        System.out.println("--------trying to deleting from the movie repo");
      return "movie 1 deleted";}
 
 
